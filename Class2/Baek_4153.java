@@ -27,7 +27,7 @@ public class Baek_4153 {
         while (true) {
             String s = br.readLine();
 
-            if(s.equals("0 0 0")) break;
+            if(s.equals("0 0 0")) break; //문자열의 비교는 equals!
 
             String input[] = (s.split(" "));//공백마다 데이터 끊어서 배열에 넣음(세 변의 길이)
 
