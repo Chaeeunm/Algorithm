@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLOutput;
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Baek_1085 {
@@ -14,22 +15,13 @@ public class Baek_1085 {
 
         int[] arr = new int[4];
 
-        int x = Integer.parseInt(st.nextToken());
-        int y = Integer.parseInt(st.nextToken());
-        int w = Integer.parseInt(st.nextToken());
-        int h = Integer.parseInt(st.nextToken());
-
-        arr[0] =x;
-        arr[1] =y;
-        arr[2] =w-x;
-        arr[3] = h-y;
+        arr[0] = Integer.parseInt(st.nextToken());
+        arr[1] = Integer.parseInt(st.nextToken());
+        arr[2] = Integer.parseInt(st.nextToken()) -arr[0];
+        arr[3] = Integer.parseInt(st.nextToken())-arr[1];
 
         Arrays.sort(arr);
 
         System.out.println(arr[0]);
-
-
     }
-
-
 }
