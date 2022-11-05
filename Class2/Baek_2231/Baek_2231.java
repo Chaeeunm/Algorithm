@@ -1,8 +1,8 @@
-package Class2;
+package Class2.Baek_2231;
 
 import java.util.Scanner;
 
-//분해합
+//분해합 -1번째 방법
 public class Baek_2231 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
