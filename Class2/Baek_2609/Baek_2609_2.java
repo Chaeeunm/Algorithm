@@ -1,9 +1,8 @@
 package Class2.Baek_2609;//2609 최대공약수와 최소공배수
 import java.util.*;
-import java.io.*;
 
 public class Baek_2609_2 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
 
