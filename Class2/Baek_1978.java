@@ -15,6 +15,10 @@ public class Baek_1978 {
 
         for(int i=0; i<N; i++){
             int A = Integer.parseInt(st.nextToken());
+            if(A==1) {
+                count--;
+                break;
+            }
             //이제 수 A가 소수(1과 자기 자신만으로 나누어떨어지는 수)인지 아닌지 판별할 거임
             for(int j=2; j<Math.sqrt(A); j++){
                 if(A%j==0) { //A가 1이 아닌 수로 나누어 떨어진다면(소수가 아니라면)
