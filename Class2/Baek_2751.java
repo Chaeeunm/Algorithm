@@ -23,7 +23,7 @@ public class Baek_2751 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
-
+//ArrayList String타입으로 하면 에러남
         ArrayList<Integer> list = new ArrayList<>();
         int N = Integer.parseInt(br.readLine());
         for(int i=0; i<N; i++) {
@@ -33,6 +33,7 @@ public class Baek_2751 {
         Collections.sort(list); //Array.sort보다 시간복잡도가 빠른 Collection.sort를 사용하여 정렬
 
         for (int s:list) {
+            //append(s+'\n')으로 하면 에러남 왜?
             sb.append(s).append('\n');
         }
         System.out.println(sb);
