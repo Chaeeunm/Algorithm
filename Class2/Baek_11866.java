@@ -9,7 +9,7 @@ public class Baek_11866 {
         int N = scanner.nextInt();
         int K = scanner.nextInt();
 
-        ArrayList<Integer> result = new ArrayList<>(); //결과 ArrayList
+        LinkedList<Integer> result = new LinkedList<Integer>(); //결과 ArrayList
 
         //q에 N까지 채워넣음
         for (int i = 1; i <= N; i++) {
