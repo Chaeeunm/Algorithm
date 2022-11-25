@@ -2,7 +2,6 @@ package Class2;
 
 import java.util.Scanner;
 
-
 public class Baek_1018 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -13,13 +12,14 @@ public class Baek_1018 {
         int min =63;
 
         String[] board = new String[row];
-        for (int i = 0; i <= row; i++) board[i] = sc.nextLine();
+        for (int i = 0; i < row; i++) board[i] = sc.nextLine();
         //8x8 크기로 체스판을 잘라줌
-        for(int j=0; j<row-8; j++){
-            for(int k=0; k<col-8; k++){
+        for(int j=0; j<=row-8; j++){
+            for(int k=0; k<=col-8; k++){
                 String[] cutBoard = new String[8];
-                for (int n=0; n<8; n++) cutBoard[n] =board[n].substring(k,k+7); //문자열  start위치 부터 end전까지 문자열 발췌
+                for (int n=0; n<8; n++) cutBoard[n] =board[j].substring(k,k+8); //문자열  start위치 부터 end전까지 문자열 발췌
                 int bCount = dif(cutBoard);
+                //B로 시작하는 체스판 차이수 + W로 시작하는 체스판 차이 =64
                 int wCount = 64 - bCount;
 
                 if(bCount<min){
@@ -52,17 +52,5 @@ public class Baek_1018 {
         }
         return count;
     }
-/*
-B으로 시작하는 체스판 차이수 + W로 시작하는 체스판 차이 =64
-   BWBWBWBW
-   WBWBWBWB
-   BWBWBWBW
-   BWBWBWBW
-   BWBWBWBW
-   WBWBWBWB
-
-
-
-     */
 
     }
