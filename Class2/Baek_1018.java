@@ -1,20 +1,68 @@
 package Class2;
-//갈수 있는데까지 가보는 브루투.......
+
+import java.util.Scanner;
+
+
 public class Baek_1018 {
-    /*일단 2차 배열로 입력받음
-    for(int row =0; row<M-9; row++){가로줄 한칸씩 넘어가며
-    for(int i=0; i<N-9; i++){세로줄도 한칸씩 넘어가며
-      for(int j=i; j<=8; j++){작은 배열의 8크기까지 확인
-          만약 arr[row][j]=B 이면
-              j+ 홀수 = W가 아니면 count++
-              j+짝수 = B가 아니면 count++
-          만약 arr[row][j]=W이면
-            j+ 홀수 = B가 아니면 count++
-            j+짝수 = W가 아니면 count++
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int row = sc.nextInt();
+        int col = sc.nextInt();
+        sc.nextLine();
+
+        int min =63;
+
+        String[] board = new String[row];
+        for (int i = 0; i <= row; i++) board[i] = sc.nextLine();
+        //8x8 크기로 체스판을 잘라줌
+        for(int j=0; j<row-8; j++){
+            for(int k=0; k<col-8; k++){
+                String[] cutBoard = new String[8];
+                for (int n=0; n<8; n++) cutBoard[n] =board[n].substring(k,k+7); //문자열  start위치 부터 end전까지 문자열 발췌
+                int bCount = dif(cutBoard);
+                int wCount = 64 - bCount;
+
+                if(bCount<min){
+                    min = bCount;
+            }
+                if(wCount<min) min = wCount;
+            }
+        }
+        System.out.println(min);
+    }
+    //B로 시작하는 체스판과의 차이를 세는 메서드
+    public static int dif(String[] cutBoard) {
+        String[] chessBoard = new String[2];
+        chessBoard[0] = "BWBWBWBW";
+        chessBoard[1] = "WBWBWBWB";
+        int count = 0;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (i % 2 == 0) {
+                    if (cutBoard[i].charAt(j) != chessBoard[0].charAt(j)) {
+                        count++;
+                    }
+                }
+                else if ((i % 2) != 0) {
+                    if (cutBoard[i].charAt(j) != chessBoard[1].charAt(j)) {
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+/*
+B으로 시작하는 체스판 차이수 + W로 시작하는 체스판 차이 =64
+   BWBWBWBW
+   WBWBWBWB
+   BWBWBWBW
+   BWBWBWBW
+   BWBWBWBW
+   WBWBWBWB
 
 
 
      */
 
-
-}
+    }
