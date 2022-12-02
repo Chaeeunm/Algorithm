@@ -11,9 +11,9 @@ public class Baek_9012 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         int N = Integer.parseInt(br.readLine());
-        int count = 0;
 
         for (int i = 0; i < N; i++) {
+            int count = 0;
             String ps = br.readLine();
             for (int j = 0; j < ps.length(); j++) {
                 if (ps.charAt(j) == '(') count++;
