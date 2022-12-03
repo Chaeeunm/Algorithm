@@ -18,6 +18,7 @@ public class Baek_9012 {
             for (int j = 0; j < ps.length(); j++) {
                 if (ps.charAt(j) == '(') count++;
                 else if (ps.charAt(j) == ')') count--;
+                if(count<0) break; //반복문 벗어나고 count != 0이기에 NO 출력
             }
             if (count == 0) sb.append("YES").append('\n');
             else sb.append("NO").append('\n');
