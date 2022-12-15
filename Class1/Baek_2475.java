@@ -14,4 +14,3 @@ public class Baek_2475 {
             System.out.println(num);
         }
     }
-}
