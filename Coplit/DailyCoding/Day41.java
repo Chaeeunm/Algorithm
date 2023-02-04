@@ -18,6 +18,6 @@ public class Day41 {
                 left = middle + 1;
             }
         }
-        return -1;
+        return -1;  //ㅎㅎ 담에 고치게씀
     }
 }
