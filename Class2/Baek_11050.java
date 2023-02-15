@@ -19,7 +19,6 @@ public class Baek_11050 {
         System.out.println(BC(N, K));
     }
         static int BC ( int N, int K){
-
             // 2번 성질
             if (N == K || K == 0) {
                 return 1;
