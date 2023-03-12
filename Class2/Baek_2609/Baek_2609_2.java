@@ -10,7 +10,6 @@ public class Baek_2609_2 {
         int num2 = in.nextInt();
 
         int GCD = gcd(num1, num2);//최대공약수
-
         int LCM = num1 * num2 / GCD; //최소공배수
 
         System.out.println(GCD);

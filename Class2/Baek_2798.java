@@ -20,8 +20,7 @@ public class Baek_2798 {
         /*stream을 통해 int 배열로 바꿔줌*/
         int[] cardNum = Arrays.stream(input).mapToInt(Integer::parseInt).sorted().toArray();
 
-        int minGap = M; //M과 차의 최솟값(초깃값 =M으로 설정)
-
+        int minGap = Integer.MAX_VALUE; //M과 차의 최솟값(초깃값은 최대 정수값으로 설정)
         for (int i = 0; i < cardNum.length - 2; i++) {
 
             for (int j = i + 1; j < cardNum.length - 1; j++) {

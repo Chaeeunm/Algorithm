@@ -1,6 +1,5 @@
 package Class2;
 
-import javax.imageio.IIOException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,8 +15,8 @@ public class Baek_10250 {
         for (int i = 0; i < tc; i++) {
             int[] input = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
             //input[0]호텔의 층 수, input[1]각 층의 방 수, input[3]몇 번째 손님
-            /*arr[2]%arr[0] = 손님이 묵을 층 수가 됨. 단, 나머지가 0이면 층수 = arr[0]*/
-            /*손님이 묵을 방 번호 수 -> (arr[2]/arr[0])+1. 단, 나머지가 0이면 arr[2]/arr[0]이 호수가 됨*/
+            /*arr[2]%arr[0] = 손님이 묵을 층 수가 됨. 나머지가 0이면 층수 = arr[0]*/
+            /*손님이 묵을 방 번호 수 -> (arr[2]/arr[0])+1. 나머지가 0이면 arr[2]/arr[0]이 호수가 됨*/
             int floor;
             int lastNum;
             if(input[2]%input[0]==0) {
