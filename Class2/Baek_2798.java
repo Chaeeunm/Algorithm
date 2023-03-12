@@ -20,22 +20,21 @@ public class Baek_2798 {
         /*stream을 통해 int 배열로 바꿔줌*/
         int[] cardNum = Arrays.stream(input).mapToInt(Integer::parseInt).sorted().toArray();
 
-        int minGap = Integer.MAX_VALUE; //M과 차의 최솟값(초깃값은 최대 정수값으로 설정)
+        int result=0;
         for (int i = 0; i < cardNum.length - 2; i++) {
 
             for (int j = i + 1; j < cardNum.length - 1; j++) {
 
                 for (int k = j + 1; k < cardNum.length; k++) {
                     int sum = cardNum[i] + cardNum[j] + cardNum[k];
-                    int gap = M - sum;
 
-                    /*합이 M을 넘지 않으면서 M에 가장 가까운경우*/
-                    if (sum <= M &&gap < minGap) {
-                        minGap = gap;
+                    /*합이 M을 넘지 않으면서 가장 큰 경우*/
+                    if (result < sum && sum <= M) {
+                        result = sum;
                     }
                 }
             }
         }
-        System.out.println(M - minGap);
+        System.out.println(result);
     }
 }
