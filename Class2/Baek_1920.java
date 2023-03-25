@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 //이진탐색 사용 -> 시간초과 해결
-public class Baek_1920 { //testtest
+public class Baek_1920 { //testtesttest
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
