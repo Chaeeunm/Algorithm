@@ -22,13 +22,15 @@ public class Baek_1978 {
             for(int j = a-1; j>1; j--){ //소수 :1보다 큰 수중 1과 자신만을 약수로 갖는 수
             if(a%j==0){ //만약 i번째 수가 j로 나누어진다면(소수가 아니라면)
                 result--; //result에 1을 빼줌
-                break;
+                break; //
                 }
             }
         }
         System.out.println(result);
     }
 }
+
+
 //        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //        int N = Integer.parseInt(br.readLine());
 //        int count=N;

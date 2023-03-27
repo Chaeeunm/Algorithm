@@ -8,33 +8,6 @@ import java.util.Stack;
 
 public class Baek_9012 {
     public static void main(String[] args) throws IOException {
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
-        StringBuilder sb = new StringBuilder();
-        Stack<Character> st = new Stack<>();
-        for(int i=0; i<N; i++){
-            String a= br.readLine();
-            for(int j=0; j<a.length(); j++){
-                char now = a.charAt(j);
-                if(now =='(') {
-                    st.push('(');
-                }
-                else{
-                    if(st.isEmpty()) sb.append("NO").append('\n');
-                    else st.pop(); {
-                    }
-                }
-            }
-            if(st.isEmpty()) sb.append("YES").append('\n');
-            else sb.append("NO").append('\n');
-        }
-        System.out.println(sb);
-    }
-}
-
-
-/*
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         int N = Integer.parseInt(br.readLine());
@@ -53,4 +26,3 @@ public class Baek_9012 {
         System.out.println(sb);
     }
 }
-*/
