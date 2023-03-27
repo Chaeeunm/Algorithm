@@ -12,6 +12,7 @@ public class Baek_9012 {
         StringBuilder sb = new StringBuilder();
         int N = Integer.parseInt(br.readLine());
 
+        //괄호 두개를 괄호 하나로 합치는 방법도 있음!!
         for (int i = 0; i < N; i++) {
             int count = 0;
             String ps = br.readLine();
