@@ -3,7 +3,7 @@ package Class2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
 //큐 => 선입선출
 
@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
 //front: 큐의 가장 앞에 있는 정수를 출력한다. 만약 큐에 들어있는 정수가 없는 경우에는 -1을 출력한다.
 //back: 큐의 가장 뒤에 있는 정수를 출력한다. 만약 큐에 들어있는 정수가 없는 경우에는 -1을 출력한다.
 public class Baek_10845 {
-    static int[] queue;
+    static LinkedList queue= new LinkedList(); //Queue는 ArrayList보다 LinkedList로 구현하는 것이 효율적(비순차적 추가 삭제가 잦음)
     static int size = 0;
     static int front = 0;
 
@@ -23,7 +23,6 @@ public class Baek_10845 {
         StringTokenizer st;
 
         int N = Integer.parseInt(br.readLine());
-        queue = new int[N]; // 배열을 생성 => 실제 저장공간을 생성
         StringBuilder sb = new StringBuilder();
 
         for(int i =0; i<N; i++){
@@ -52,27 +51,27 @@ public class Baek_10845 {
         System.out.println(sb);
     }
     public static void push(int num){
-        queue[front+size] = num;
-        size++;
+        queue.add(num);
     }
-    public static int pop(){
-        front++;
-        size--;
-        return queue[front-1];
+    public static Object pop(){
+        if(queue.size()!=0) {
+            return queue.poll(); //가장 첫번째 요소 반환
+        }
+        else return -1;
     }
     public static int size(){
-        return size;
+        return queue.size();
     }
     public static int empty(){
-        if(size==0)return 1;
+        if(queue.size()==0)return 1;
         else return 0;
     }
-    public static int front(){
-        if(size==0)return -1;
-        else return queue[front];
+    public static Object front(){
+        if(queue.size()==0)return -1;
+        else return queue.peek();
     }
-    public static int back(){
-        if(size==0) return -1;
-        else return queue[front+size-1];
+    public static Object back(){
+        if(queue.size()==0) return -1;
+        else return queue.removeLast();
     }
 }
