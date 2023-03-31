@@ -68,10 +68,10 @@ public class Baek_10845 {
     }
     public static Object front(){
         if(queue.size()==0)return -1;
-        else return queue.peek();
+        else return queue.element();
     }
     public static Object back(){
         if(queue.size()==0) return -1;
-        else return queue.removeLast();
+        else return queue.get(queue.size()-1);
     }
 }
