@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 //두가지의 경우로 DFS 해줌
 //3으로 나누고 +1 나머지를 더해줌 나눈 수 리턴
 //2로나누고 +1 나머지를 더해줌 나눈 수 리턴
-//탈출 조건 = 1일떄
+//탈출 조건 2보다 작을떄
 public class Baek_1463 {
     public static void main(String[] args) throws IOException {
 
@@ -21,3 +21,4 @@ public class Baek_1463 {
          return Math.min(countMin(i/2,count+1+(i%2)),countMin(i/3,count+1+(i%3)));
         }
     }
+
