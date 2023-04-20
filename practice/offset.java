@@ -25,13 +25,15 @@ public class offset {
                 int num = Integer.parseInt(strs[i][j]);
                 switch (i) {
                     case 0:
-                        if (num < Integer.parseInt(strs[i + 1][j])) offsetJ(num,i,j,strs);
+                        if (num < Integer.parseInt(strs[i + 1][j])) return offsetJ(num,i,j,strs);
                         break;
                     case 1, 2, 3:
                         if (num < Integer.parseInt(strs[i - 1][j]) && num < Integer.parseInt(strs[i + 1][j]))
-                            offsetJ(num, i,j,strs);
+                            return offsetJ(num, i,j,strs);
+                        break;
                     case 4:
-                        if (num < Integer.parseInt(strs[i - 1][j])) offsetJ(num,i,j,strs);
+                        if (num < Integer.parseInt(strs[i - 1][j])) return offsetJ(num,i,j,strs);
+                        break;
         }
         return strs[i][j];
         }
@@ -41,6 +43,7 @@ public class offset {
                 case 0 : if(num<Integer.parseInt(strs[i][j+1])) return "*";
                     break;
                 case 1,2,3: if(num<Integer.parseInt(strs[i][j-1]) && num<Integer.parseInt(strs[i][j+1])) return "*";
+                    break;
                 case  4 : if(num<Integer.parseInt(strs[i][j-1])) return "*";
                     break;
             }
