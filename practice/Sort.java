@@ -5,7 +5,10 @@ import java.util.Arrays;
 public class Sort {
     public static void main(String[] args){
         int[] arr= {8,2,4,5,1,7,3,6};
-        mergeSort(arr,0,7);
+
+      //  int[] arr ={2,1,3,7,5,4};
+//        mergeSort(arr,0,7);
+        quickSort(arr,0,7);
 
     }
     //Merge Sort 시간복잡도 O(nlogn)
@@ -42,5 +45,38 @@ public class Sort {
         while (--idx>=start_idx){
             arr[idx] = sorted[idx];
         }
+    }
+
+
+    //퀵정렬 시간복잡도 평균:nlogn보다 빠름 worst:n^2
+
+    static void quickSort(int[] arr, int l, int r){
+        if(l<r){ //종료 조건 : element가 하나 남았을 때
+            int p = paritition(arr,l,r);
+            System.out.println("quick arr : " + Arrays.toString(arr));
+
+            quickSort(arr,l,p-1); //피봇을 기준으로 왼쪽 정렬
+            quickSort(arr,p+1,r); //피봇을 기준으로 오른쪽 정렬
+
+        }
+    }
+
+    static int paritition(int[]arr, int l, int r){
+        int pivot = arr[r]; //제일 오른쪽 수를 피봇으로 삼는 퀵정렬
+        int idx = l-1; //자리를 바꿀 인덱스 = 피봇을 기준으로 더 작은 수가 들어있는 인덱스
+
+        //피봇의 전 위치까지 돌면서 피봇보다 작은 수를 앞 인덱스에 차례로 담아줌
+        for(int j=l; j<= r-1; j++){
+            if(arr[j]<=pivot){
+                idx++;
+                swap(arr,idx,j);
+            }
+        }swap(arr,idx+1,r); //피봇 보다 작은 수가 들어있는 idx 보다 한칸 뒤는 피봇의 위치가 됨
+        return idx+1 ; //피봇의 위치 리턴
+    }
+    static void swap(int[]arr,int i, int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
