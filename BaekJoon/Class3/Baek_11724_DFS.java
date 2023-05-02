@@ -8,12 +8,11 @@ import java.util.StringTokenizer;
 public class Baek_11724_DFS {
     static boolean[] visited;
     static int[][]graph;
-    static int N;
 
     public static void main(String... args) throws IOException {
         BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-        N =  Integer.parseInt(st.nextToken()); //정점의 갯수
+        int N =  Integer.parseInt(st.nextToken()); //정점의 갯수
         int M = Integer.parseInt(st.nextToken()); //간선의 갯수
         int cnt =0;
 
