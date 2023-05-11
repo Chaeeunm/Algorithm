@@ -37,7 +37,7 @@ public class Baek_1931 {
         int time = h[0][1];
         for(int i=1; i<N; i++){
             //두 회의가 겹치면 끝시간이 빠른걸 선택
-            if(h[i][0])
+
         }
 
 
