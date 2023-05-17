@@ -15,6 +15,8 @@ public class Baek_1003 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine()); //들어올 수
         StringBuilder sb = new StringBuilder();
+        String a ="asefds";
+        a.length();
 
         for(int i=0; i<N; i++) {
             int num = Integer.parseInt(br.readLine());
