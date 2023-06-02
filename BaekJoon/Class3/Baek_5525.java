@@ -17,9 +17,9 @@ public class Baek_5525 {
 
         int count =0;
 
-        for(int i=0; i<M; i++) {
+        for(int i=0; i<M-2*N; i++) {
             if (S.charAt(i) == 'I') { //만약 i번째 수가 I면 다음수가 O
-                for(int j=i+1; j<2*N+i+1; j+=2){
+                for(int j=i+1; j<2*N+i; j+=2){ //j=5 j<6
                     if(S.charAt(j)!='O'||S.charAt(j+1)!='I'){
                         break;
                     }
