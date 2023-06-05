@@ -31,6 +31,8 @@ public class Baek_10026 {
         }
     }
     static void dfs(int x, int y){
+        visited[x][y] = true;
+        char tmp = drawing[x][y];
 
     }
 
