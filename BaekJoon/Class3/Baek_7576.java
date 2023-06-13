@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.StringTokenizer;
 
 public class Baek_7576 {
     static int[][] box;
@@ -19,12 +20,12 @@ public class Baek_7576 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine()," ");
 
-        N = Integer.parseInt(br.readLine());
-        M = Integer.parseInt(br.readLine());
+        M = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
 
         box = new int[N][M];
-
 
         //1 익토 / 0안익토 / -1없토
         for (int i = 0; i < N; i++) {
@@ -32,13 +33,15 @@ public class Baek_7576 {
         }
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
-                if (box[N][M] == 1) { //토마토가 익어있으면 주변 토마토도 익게 하고, count++;
+                if (box[i][j] == 1) {
                     q.add(new int[]{i,j});
                 }
             }
         }
         bfs();
-        System.out.println();
+        countDay();
+        cnt = checkTomato()?cnt:-1;
+        System.out.println(cnt);
     }
 
     static void bfs() {
@@ -49,28 +52,38 @@ public class Baek_7576 {
             change(x,y);
         }
     }
-
+//안익은 토마토가 있으면 false 출력
     static boolean checkTomato() {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 if (box[i][j] == 0) {
-                    return true;
+                    return false;
                 }
             }
         }
-        return false;
+        return true;
+    }
+    static int countDay(){
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                cnt = Math.max(cnt,box[i][j]-1);
+                }
+            }
+        return cnt;
     }
 
-        //모든 구역을 탐색(모두 익을 때까지)
-        static void change(int x, int y) {
+    //상하좌우중 0이 있으면 q에 넣고 depth+1
+     static void change(int x, int y) {
             for (int i = 0; i < 4; i++) {
                 int a = x + dx[i];
                 int b = y + dy[i];
-                if (a < 0 || b < 0 || a > N || b > M) {
+                if (a < 0 || b < 0 || a >= N || b >= M) {
                     continue;
                 }
-                if (box[a][b] == 0) box[a][b] = 1;
-                q.add(new int[]{a, b});
+                if (box[a][b] == 0) {
+                    box[a][b] = box[x][y] + 1;
+                    q.add(new int[]{a, b});
+                }
             }
         }
     }
