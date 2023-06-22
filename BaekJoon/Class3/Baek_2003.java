@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Baek_2230 {
+public class Baek_2003 {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -30,12 +30,15 @@ public class Baek_2230 {
         while (end < N) { //4 2 1111   cnt start end sum
             if (sum == M) {//
                 cnt++;
-                if(end<N-1) {
+                if (end < N - 1) {
                     sum -= arr[start++]; //start값을 빼준 후 start 1 smffuwna
                     sum += arr[++end]; //end 값을 더해준 후 arr[end] 값을 더해줌
-                }
+                } else break;
+                ;
             } else if (sum < M) { //0 0 1 2
-                sum += arr[++end];
+                if (end < N - 1) {
+                    sum += arr[++end];
+                } else break;
             } else if (sum > M) {
                 sum -= arr[start++];
             }
