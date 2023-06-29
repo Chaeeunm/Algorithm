@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Baek_2667 {
+public class Baek_2667_copy {
 
     static int[][] dj;
     static int[] dx = {1, 0, -1, 0};

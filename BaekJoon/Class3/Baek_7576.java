@@ -43,7 +43,6 @@ public class Baek_7576 {
         cnt = checkTomato()?cnt:-1;
         System.out.println(cnt);
     }
-
     static void bfs() {
         while (!q.isEmpty()){
             int[] t =q.poll();
