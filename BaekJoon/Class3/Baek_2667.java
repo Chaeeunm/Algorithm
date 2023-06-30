@@ -10,7 +10,7 @@ import java.util.Queue;
 public class Baek_2667 {
 
     static int[][] dj;
-    static int[] dx = {1, 0, -1, 0};
+    static int[] dx = {-1, 0, 1, 0};
     static int[] dy = {0, 1, 0, -1};
     static Queue<int[]> q = new LinkedList();
     static boolean[][] visited;
@@ -34,6 +34,7 @@ public class Baek_2667 {
                 dj[i][j] = Integer.parseInt(String.valueOf(a.charAt(j)));
             }
         }
+        int dc =0;
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
@@ -41,11 +42,13 @@ public class Baek_2667 {
                     visited[i][j] = true;
                     q.add(new int[]{i, j});
                     ar.add(bfs());
+                    dc++;
                 }
             }
         }
 
         Object[] result = ar.stream().sorted().toArray();
+        sb.append(dc).append('\n');
 
         for(int i=0; i<result.length; i++){
             sb.append(result[i]).append('\n');
@@ -59,9 +62,8 @@ public class Baek_2667 {
             int[] t = q.poll();
             count++;//q에서 하나 꺼낼때마다 count++
             for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
                     int y = t[0] + dy[i];
-                    int x = t[1] + dx[j];
+                    int x = t[1] + dx[i];
                     if (y < 0 || x < 0 || y >= N || x >= N) {
                         continue;
                     }
@@ -69,7 +71,6 @@ public class Baek_2667 {
                         visited[y][x] = true;
                         q.add(new int[]{y, x});
                     }
-                }
             }
         }
         return count;
