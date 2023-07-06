@@ -44,19 +44,23 @@ public class Baek_7569 {
             }
         }
 
-        for(int i =0; i<H; i++){ //높이
-            for(int j =0; j<N; j++){ //세로
-                for(int k=0; k<M; k++){ //가로
-                    if(box[i][j][k]==1){
-                        q.add(new tomato(k,j,i));
+        if(checkTomato()) System.out.println(0);
+        else {
+
+            for (int i = 0; i < H; i++) { //높이
+                for (int j = 0; j < N; j++) { //세로
+                    for (int k = 0; k < M; k++) { //가로
+                        if (box[i][j][k] == 1) {
+                            q.add(new tomato(k, j, i));
+                        }
                     }
                 }
             }
+            bfs();
+            countDay();
+            cnt = checkTomato() ? cnt : -1;
+            System.out.println(cnt);
         }
-        bfs();
-        countDay();
-        cnt = checkTomato()?cnt:-1;
-        System.out.println(cnt);
 
     }
     public static void bfs(){
@@ -82,6 +86,7 @@ public class Baek_7569 {
         return true;
     }
 
+
     static int countDay(){
         for (int i = 0; i < H; i++) { //높이
             for (int j = 0; j < N; j++) { //세로
@@ -98,13 +103,13 @@ public class Baek_7569 {
         for(int i =0; i<6; i++){
             int a = x + dx[i];
             int b = y + dy[i];
-            int c = y + dz[i];
+            int c = z + dz[i];
             if(a<0||b<0||c<0||a>=M||b>=N||c>=H){
                 continue;
             }
             if(box[c][b][a] ==0){
                 box[c][b][a] = box[z][y][x] +1;
-                q.add(new tomato(x,y,z));
+                q.add(new tomato(a,b,c));
             }
         }
     }
