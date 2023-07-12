@@ -5,7 +5,7 @@ public class Baek_1152 {
         public static void main(String[] args) throws IOException {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            String s = br.readLine().trim();
+            String s = br.readLine().trim(); //앞뒤공백 제거
 
             /*공백을 기준으로 나누어 배열에 입력*/
             String arr[] = s.split(" ");
