@@ -20,8 +20,15 @@ public class Baek_11047 {
         for (int i=0; i< N; i++){
             coin[i] = Integer.parseInt(br.readLine());
         }
-    }
-    public static int count(){
-        return 0;
+        int cnt =0;
+        //오름차순이므로 뒤에서부터 반복
+        for(int i=N-1; i>=0; i--){
+            if(K==0) break;
+            if (K >= coin[i]) {
+                cnt += K / coin[i]; //동전의 개수 더해주기
+                K %= coin[i];
+            }
+        }
+        System.out.println(cnt);
     }
 }
