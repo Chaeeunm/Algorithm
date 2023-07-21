@@ -12,8 +12,7 @@ public class Baek_1012 {
     //상하좌우 를 돌아줌
     static int[] dx = {0, 1, -1, 0};
     static int[] dy = {-1, 0, 0, 1};
-    static boolean[][] visited;
-    static int[][] field;
+    static boolean[][] field;
 
     static Queue<int[]> q = new LinkedList<>();
 
@@ -32,8 +31,7 @@ public class Baek_1012 {
             int S = Integer.parseInt(st.nextToken());//세로
             int K = Integer.parseInt(st.nextToken()); //위치개수
 
-            field = new int[S][G];
-            visited = new boolean[S][G];
+            field = new boolean[S][G];
 
             cnt = 0; // cnt 초기화
 
@@ -43,13 +41,13 @@ public class Baek_1012 {
                 int X = Integer.parseInt(c.nextToken());
                 int Y = Integer.parseInt(c.nextToken());
 
-                field[Y][X] = 1; //배추 심어줌
+                field[Y][X] = true; //배추 심어줌
             }
 
             for (int i = 0; i < S; i++) {
                 for (int j = 0; j < G; j++) {
-                    if (!visited[i][j] && field[i][j] == 1) {
-                        visited[i][j] = true;
+                    if (field[i][j]) {
+                        field[i][j] = false;
                         q.add(new int[]{j, i});
                         bfs(j, i); //j 가로 i 세로
                         cnt++; //bfs 한바퀴 돌고나면 cnt++
@@ -68,8 +66,8 @@ public class Baek_1012 {
             for (int i = 0; i < 4; i++) {
                 int a = cab[0] + dx[i];
                 int b = cab[1] + dy[i];
-                if (a >= 0 && a < field[0].length && b >= 0 && b < field.length && !visited[b][a] && field[b][a] == 1) {
-                    visited[b][a] = true;
+                if (a >= 0 && a < field[0].length && b >= 0 && b < field.length && field[b][a]) {
+                    field[b][a] = false;
                     q.add(new int[]{a, b});
                 }
             }
