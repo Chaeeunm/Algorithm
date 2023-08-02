@@ -36,17 +36,21 @@ public class Baek_14940 {
         for (int i = 0; i < S; i++) {
             map[i] = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         }
+        int stx =0;
+        int sty =0;
         for (int i = 0; i < S; i++) {
             for (int j = 0; j < G; j++) {
                 if (map[i][j] == 2) {
                     map[i][j] = 0;
-                    q.add(new int[]{j, i});
-                    visited[i][j] = true;
-                    bfs(j, i);
-                    map[i][j] = 2;
+                    sty = i;
+                    stx = j;
+                    break;
                 }
             }
         }
+        q.add(new int[]{stx, sty});
+        visited[sty][stx] = true;
+        bfs(stx, sty);
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < S; i++) {
             for (int j = 0; j < G; j++) {
