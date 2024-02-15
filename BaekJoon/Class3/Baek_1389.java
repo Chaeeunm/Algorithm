@@ -3,7 +3,6 @@ package BaekJoon.Class3;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.Buffer;
 import java.util.StringTokenizer;
 
 public class Baek_1389 {
@@ -25,7 +24,7 @@ public class Baek_1389 {
         for(int i=1; i<=N; i++){ //i는 중간노드
             for(int j=1; j<=N; j++){
                 for(int k=1; k<=N; k++){
-                    fw[j][k] = Math.min(fw[][])
+                   // fw[j][k] = Math.min(fw[][])
                 }
             }
         }
