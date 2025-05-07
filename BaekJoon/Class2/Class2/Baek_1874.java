@@ -8,57 +8,35 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class Baek_1874 {
-  public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
 
-    int n = Integer.parseInt(br.readLine());
+        Stack<Integer> stack = new Stack<>();
+        Queue<Integer> q = new LinkedList<>();
+        int[] result = new int[n];
 
-    Queue<Integer> q = new LinkedList<>();
-    Stack<Integer> st = new Stack<>();
+        for(int i=1; i<= n; i++) {
+            q.add(i); //1 2 3 4 5 6 7 8
+        }
 
-    for(int i =1 ; i<=n; i++) {
-      q.add(i);
+        for(int i=0; i<n; i++) {
+            result[i] = Integer.parseInt(br.readLine());
+        }
+        int index =0;
+        StringBuilder sb = new StringBuilder();
+        // 주어진 것 2 3 4 5 6 7 8
+        // 목표     4 3 6 8 7 5 2 1 index =1;
+        while (q.isEmpty()) {
+            //우리가 만들어야 하는 수열의 숫자와 같을때까지 스택에 담아줌
+            int tmp = q.poll();
+            if(tmp != result[index])
+            stack.add(tmp);
+            else { //같다면
+                index++; //인덱스 한칸 늘려줌
+            }
+        }
+
     }
-
-    int index =0;
-    int[] compare = new int[n];
-    for(int i =0; i<n; i++){
-      compare[i] = Integer.parseInt(br.readLine());
-    }
-
-    //일단 스택에 수 하나 넣고 sb에 '+'추가
-    StringBuilder sb = new StringBuilder();
-    st.push(q.poll());
-    sb.append('+').append('\n');
-
-    while (!q.isEmpty()){
-      if(st.isEmpty()) {
-        st.push(q.poll());
-        sb.append('+').append('\n');
-      }
-      //스택 젤 위에 있는거랑 지금 index 비교해서 같으면 빼주고 sb에 '-'추가 index ++
-      else if(st.peek() == compare[index]){
-        st.pop();
-        index ++;
-        sb.append('-').append('\n');
-      }
-      // 다르면 또 넣음 sb에 '+'추가
-      else {
-        st.push(q.poll());
-        sb.append('+').append('\n');
-      }
-    }
-    while (!st.isEmpty()){
-      if(st.peek() == compare[index]){
-        st.pop();
-        index ++;
-        sb.append('-').append('\n');
-      }
-      else break;
-    }
-    //만약 index ==n-1이면 sb출력 그렇지 않으면 NO출력
-    String result = (index == n)? sb.toString(): "NO";
-    System.out.println(result);
-  }
 }

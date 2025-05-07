@@ -1,61 +1,82 @@
-// package BaekJoon.Class2.Class2;
-//
-// import java.io.BufferedReader;
-// import java.io.IOException;
-// import java.io.InputStreamReader;
-// import java.util.Arrays;
-// import java.util.Comparator;
-// import java.util.HashMap;
-// import java.util.LinkedList;
-// import java.util.Map;
-// import java.util.Queue;
-// import java.util.StringTokenizer;
-//
-//
-// class Docs {
-//   int sort;
-//   int importance;
-//   Docs(int sort, int importance){
-//     this.sort = sort;
-//     this.importance = importance;
-//   }
-// }
-//
-// public class Baek_1966 {
-//
-//   public static void main(String[] args) throws IOException {
-//     //선입 선출
-//     //큐의 가장 앞에 있는 문서의 중요도를 확인
-//     //나머지 문서 중 현재 문서보다 중요도가 높은 문서가 하나라도 있다면 ㅇㅣ 문서를 인쇠하지 않고 젤 뒤에 제배치
-//
-//
-//     //문서의 갯수 (1<=N<=100)
-//     //몇번째로 인쇄되었는지 궁금한 문서의 순서(맨 왼쪽은 0번쨰)
-//     //중요도는 1이상 9 이하의 정수
-//     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//     int tc = Integer.parseInt(br.readLine());
-//
-//     while (tc --> 0) {
-//       StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-//       int num = Integer.parseInt(st.nextToken()); //문서의 갯수
-//       int resultSort  = Integer.parseInt(st.nextToken()); //궁금한 문서의 순서
-//
-//
-//       st = new StringTokenizer(br.readLine(), " ");
-//
-//       Queue<Docs> printer = new LinkedList<>();
-//       for(int i =0; i< num; i++) { //1 2 3 4
-//         printer.add(new Docs(i,Integer.parseInt(st.nextToken()))); //순서, 중요도 넣어줌
-//       }
-//
-//       //젤 마지막에 넣은거 꺼내서 젤 앞에 넣기
-//
-//
-//       });
-//
-//
-//     }
-//
-//
-//   }
-// }
+package BaekJoon.Class2.Class2;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
+
+class Document {
+    int order;
+    int importance;
+
+    public Document(int order,int importance){
+        this.importance =importance;
+        this.order = order;
+    }
+
+}
+
+public class  Baek_1966 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int tc = Integer.parseInt(br.readLine());
+
+        StringBuilder sb = new StringBuilder();
+
+        Queue<Document> printer;
+
+        while (tc -->0) {
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+
+
+            //문서의 갯수 N , 몇 번째로 인쇄되었는지 궁금한 순서 M
+            int N = Integer.parseInt(st.nextToken());
+            int M = Integer.parseInt(st.nextToken());
+
+            int[] importanceList = new int[N];
+            printer =  new LinkedList<>();
+
+            st = new StringTokenizer(br.readLine()," ");
+            for(int i =0; i<N; i++) {
+                int importance = Integer.parseInt(st.nextToken());
+                printer.add(new Document(i,importance));
+                importanceList[i] = importance;
+            }
+            //중요도는 배열에 하나 넣고 오름차순 정렬
+            Arrays.sort(importanceList); //2 4 1 3 // 1 2 3 4
+
+            //이제 프린터 안의 문서 중요도랑 비교할것임
+
+            //같으면 빼주고 CNT ++, 이떄 뺴준 친구 순서가 M과 같으면 반복문 탈출
+            int cnt = 0;
+            int nowIndex = importanceList.length -1;
+
+            while (!printer.isEmpty()){
+                Document tmp = printer.poll();
+
+                if(tmp.importance == importanceList[nowIndex]) {
+                    cnt++;
+                    nowIndex --;
+                    if(tmp.order == M) {
+                        sb.append(cnt).append('\n');
+                        break;
+                    }
+                }
+                //같지 않으면
+                else {
+                    printer.add(tmp);
+                }
+            }
+
+            //작으면 넘김
+
+            //CNT 출력
+
+        }
+        System.out.println(sb);
+
+    }
+}

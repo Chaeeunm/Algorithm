@@ -3,7 +3,6 @@ package BaekJoon.Class3;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.Buffer;
 import java.util.StringTokenizer;
 
 public class Baek_1389 {
@@ -14,15 +13,20 @@ public class Baek_1389 {
         int N = Integer.parseInt(st.nextToken());//유저의 수
         int M = Integer.parseInt(st.nextToken());//친구관계의 수
 
-        int[][] friends = new int[N+1][N+1];
         int[][] fw = new int[N+1][N+1];
 
-        for(int i=1; i<=N; i++){
+        for(int i=0; i<M; i++){
             st = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
-
-            friends[a][b] = friends[b][a] = 1;
+            fw[a][b] = fw[b][a] =1;
+        }
+        for(int i=1; i<=N; i++){ //i는 중간노드
+            for(int j=1; j<=N; j++){
+                for(int k=1; k<=N; k++){
+                   // fw[j][k] = Math.min(fw[][])
+                }
+            }
         }
 
 
