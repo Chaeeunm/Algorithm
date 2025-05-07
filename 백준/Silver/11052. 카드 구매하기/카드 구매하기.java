@@ -19,8 +19,8 @@ public class Main {
 		dp[1] = prices[1];
 
 		for(int i =2; i < n+1; i++) {
-			for(int j = 1; j < i; j++) {
-					dp[i] = Math.max(dp[i],Math.max(prices[i], dp[i - j] + prices[j]));
+			for(int j = 1; j <= i; j++) {
+					dp[i] = Math.max(dp[i], dp[i - j] + prices[j]);
 			}
 		}
 
