@@ -19,21 +19,19 @@ public class Baek_2178 {
 	public static boolean[][] visited;
 	public static void main(String[] args) throws IOException {
 
-
-		//한바퀴 돌때마다 카운트 증가,
-		//x,y 왔을때 총 몇바퀴 도는지 확인
-
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		y = Integer.parseInt(st.nextToken()) -1;
-		x = Integer.parseInt(st.nextToken()) -1;
+		y = Integer.parseInt(st.nextToken());
+		x = Integer.parseInt(st.nextToken());
 		graph = new int[y][x];
 		visited = new boolean[y][x];
 
+		y--; x--;
 		for(int i =0; i<= y; i++) {
 			String str = br.readLine();
-			for(int j =0; i<= x; j++) {
-				graph[i][j] = str.charAt(j);
+			for(int j =0; j<= x; j++) {
+				int num = (str.charAt(j) == '1')?1:0;
+				graph[i][j] = num;
 			}
 		}
 
@@ -43,33 +41,34 @@ public class Baek_2178 {
 
 	public static int bfs() {
 		Queue<int[]> queue = new LinkedList<>();
-		int result = 0;
 
-		queue.offer(new int[]{0,0});
+		queue.offer(new int[]{0,0,1});
+		visited[0][0] = true;
 
 		while (!queue.isEmpty()) {
 			int[] now = queue.poll();
 
 			int nowX = now[0];
 			int nowY = now[1];
+			int depth = now[2];
 			if(nowX == x && nowY == y) {
-				break;
+				return depth;
 			}
+
 			for(int i =0; i<4; i++) {
 				int plusX = nowX + dx[i];
 				int plusY = nowY + dy[i];
 
-				if(nowX<1||nowX+plusX>=x||nowY<1||nowY+plusY>=y){
+				//x= 5 y = 3
+				if(plusX<0||plusX>x||plusY<0||plusY>y){
 					continue;
-				} if(graph[nowY][nowX] == 1 && !visited[nowY][nowX]) {
-					queue.offer(new int[]{nowX,nowY});
-					result ++;
+				} if(graph[plusY][plusX] == 1 && !visited[plusY][plusX]) {
+					queue.offer(new int[]{plusX,plusY,depth+1});
+					visited[plusY][plusX] = true;
 				}
 
 			}
 		}
-
-		return result;
-
+		return 0;
 	}
 }
