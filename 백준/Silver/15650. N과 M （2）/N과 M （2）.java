@@ -3,7 +3,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-	static boolean[] visited;
 	static List<Integer> selected = new ArrayList<>();
 	static StringBuilder sb;
 
@@ -11,8 +10,6 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		int m = sc.nextInt();
-
-		visited = new boolean[n+1];
 
 		sb = new StringBuilder();
 
@@ -29,13 +26,10 @@ public class Main {
 			return;
 		}
 		for(int i = start; i<=n; i++){
-			if(!visited[i]){
-				visited[i] = true;
 				selected.add(i);
 				dfs(i+1, n,m-1);
-				visited[i] = false;
 				selected.remove(selected.size()-1);
-			}
+
 		}
 	}
 
