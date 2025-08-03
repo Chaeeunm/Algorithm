@@ -1,41 +1,41 @@
-
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Comparator;
+import java.io.OutputStreamWriter;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-//길이가 짧은 것부터
-//길이가 같으면 사전순으로
-//중복된 단어는 하나만 남기고 제거
 public class Main {
-    public static void main(String[] args) throws IOException {
+	//길이가 짧은것부타,
+	//길이가 짧으면 사전순
+	//중복단어 제거
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int n = Integer.parseInt(br.readLine());
+		int N = Integer.parseInt(br.readLine());
+		Set<String> set = new HashSet<>();
 
-        String[] arr = new String[n];
+		while (N-->0){
+			set.add(br.readLine());
+		}
 
-        for(int i =0; i<n; i++) {
-            arr[i] = br.readLine();
-        }
+		List<String> sorted = set.stream().sorted((a,b) -> {
+			if( a.length() == b.length()){
+				return a.compareTo(b);
+			} else return a.length() - b.length();
+		}).collect(Collectors.toList());
 
-       Arrays.sort(arr, new Comparator<String>() {
-           @Override
-           public int compare(String s1, String s2) {
-               if(s1.length() == s2.length())  {
-                   return s1.compareTo(s2);
-               }
-               //그렇지 않으면 길이 오름차순대로
-               return s1.length() - s2.length();
-           }
-       });
-        StringBuilder sb = new StringBuilder();
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
+		for(String now : sorted){
+			bw.write(now);
+			bw.newLine();
+		}
+		bw.flush();
+	}
 
-        Arrays.stream(arr).distinct().forEach(a -> sb.append(a).append('\n'));
-
-        System.out.println(sb);
-    }
 }
