@@ -1,0 +1,5 @@
+-- 코드를 입력하세요
+SELECT fp.PRODUCT_ID, fp.PRODUCT_NAME, fp.PRODUCT_CD, fp.CATEGORY, fp.PRICE
+FROM FOOD_PRODUCT fp
+ORDER BY fp.price desc
+LIMIT 1;
