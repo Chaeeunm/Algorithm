@@ -85,7 +85,7 @@ public class Main {
 			for(int i = start ; i< visited.length; i++) {
 				if (!visited[i]){
 					visited[i] = true;
-					pickChicken(start+1, depth+1);
+					pickChicken(i+1, depth+1);
 					visited[i] = false;
 				}
 			}
